@@ -9,14 +9,16 @@ class_name Player_l
 @export var escena_bala: PackedScene
 @export var vida_maxima := 100
 @onready var camara := get_viewport().get_camera_2d()
+@onready var luz: ProgressBar = $Luz
+@onready var point_light_2d: PointLight2D = $PointLight2D
+
 
 var vida_actual := vida_maxima
 @onready var vida_bar: ProgressBar = safe_get_node("../barra vida/ProgressBar")
 @onready var balas_vista = safe_get_node("../BalasVista")
 
-@export var WALK_SPEED = 300.0
-@export var RUN_SPEED = 500.0
-
+const WALK_SPEED = 300.0
+const RUN_SPEED = 500.0
 var current_speed = WALK_SPEED
 var last_direction = Vector2.DOWN
 
@@ -26,6 +28,13 @@ const STAMINA_DRAIN_RATE = 20.0
 const STAMINA_REGEN_RATE = 6.0
 var is_running = false
 var can_run = true
+
+# Variables para el sistema de linterna
+const MAX_BATTERY = 100.0
+var current_battery = MAX_BATTERY
+const BATTERY_DRAIN_RATE = 2.0  # Velocidad de descarga de la batería
+const BATTERY_CHARGE_RATE = 8.0  # Velocidad de carga de la batería
+var flashlight_on = false
 
 var current_chest: Chest = null
 var keys_collected: int = 0
@@ -52,11 +61,21 @@ func configurar_inputs():
 		key_r.physical_keycode = KEY_R
 		InputMap.add_action("recargar")
 		InputMap.action_add_event("recargar", key_r)
+	# Agregar acción para la linterna
+	if not InputMap.has_action("toggle_flashlight"):
+		var key_i := InputEventKey.new()
+		key_i.physical_keycode = KEY_I
+		InputMap.add_action("toggle_flashlight")
+		InputMap.action_add_event("toggle_flashlight", key_i)
 
 func _ready() -> void:
 	add_to_group("player")
 	configurar_inputs()
 	setup_stamina_bar()
+	setup_battery_bar()
+	# Inicializar linterna apagada
+	point_light_2d.visible = false
+	flashlight_on = false
 	if vida_bar:
 		vida_bar.max_value = vida_maxima
 		vida_bar.value = vida_actual
@@ -86,12 +105,45 @@ func setup_stamina_bar() -> void:
 	fill_style.corner_radius_bottom_right = 3
 	stamina_bar.add_theme_stylebox_override("fill", fill_style)
 
+func setup_battery_bar() -> void:
+	luz.max_value = MAX_BATTERY
+	luz.value = current_battery
+	luz.show_percentage = false
+	# Estilo de fondo para la barra de batería
+	var bg_style = StyleBoxFlat.new()
+	bg_style.bg_color = Color(0.2, 0.2, 0.2, 0.8)
+	bg_style.corner_radius_top_left = 5
+	bg_style.corner_radius_top_right = 5
+	bg_style.corner_radius_bottom_left = 5
+	bg_style.corner_radius_bottom_right = 5
+	bg_style.border_width_left = 2
+	bg_style.border_width_right = 2
+	bg_style.border_width_top = 2
+	bg_style.border_width_bottom = 2
+	bg_style.border_color = Color(0.4, 0.4, 0.4, 1.0)
+	luz.add_theme_stylebox_override("background", bg_style)
+	# Estilo de relleno para la barra de batería
+	var fill_style = StyleBoxFlat.new()
+	fill_style.bg_color = Color(1.0, 1.0, 0.3, 1.0)  # Color amarillo para la batería
+	fill_style.corner_radius_top_left = 3
+	fill_style.corner_radius_top_right = 3
+	fill_style.corner_radius_bottom_left = 3
+	fill_style.corner_radius_bottom_right = 3
+	luz.add_theme_stylebox_override("fill", fill_style)
+
 func _physics_process(delta: float) -> void:
 	if camara and keys_label:
 		var screen_position = camara.get_screen_center_position() + (global_position - camara.global_position)
 		keys_label.position = screen_position + Vector2(-900, -380)  # Ajusta Y según necesites
+	
 	handle_stamina(delta)
+	handle_flashlight(delta)
 	actualizar_pistola()
+	
+	# Manejar input de linterna
+	if Input.is_action_just_pressed("toggle_flashlight"):
+		toggle_flashlight()
+	
 	if Input.is_action_just_pressed("disparar"):
 		disparar()
 	if Input.is_action_just_pressed("recargar"):
@@ -126,6 +178,38 @@ func handle_stamina(delta: float) -> void:
 			can_run = true
 	update_stamina_bar()
 
+func handle_flashlight(delta: float) -> void:
+	if flashlight_on:
+		# Descargar batería cuando la linterna está encendida
+		current_battery -= BATTERY_DRAIN_RATE * delta
+		if current_battery <= 0:
+			current_battery = 0
+			# Apagar automáticamente la linterna cuando se agota la batería
+			flashlight_on = false
+			point_light_2d.visible = false
+			print("¡Batería agotada! Linterna apagada.")
+	else:
+		# Cargar batería cuando la linterna está apagada
+		current_battery += BATTERY_CHARGE_RATE * delta
+		if current_battery >= MAX_BATTERY:
+			current_battery = MAX_BATTERY
+	
+	update_battery_bar()
+
+func toggle_flashlight():
+	if not flashlight_on and current_battery > 0:
+		# Encender linterna
+		flashlight_on = true
+		point_light_2d.visible = true
+		print("Linterna encendida")
+	elif flashlight_on:
+		# Apagar linterna
+		flashlight_on = false
+		point_light_2d.visible = false
+		print("Linterna apagada")
+	else:
+		print("¡Batería agotada! No se puede encender la linterna.")
+
 func update_stamina_bar() -> void:
 	var tween = create_tween()
 	tween.tween_property(stamina_bar, "value", current_stamina, 0.1)
@@ -138,6 +222,19 @@ func update_stamina_bar() -> void:
 			style.bg_color = Color(0.8, 0.8, 0.2, 1.0)
 		else:
 			style.bg_color = Color(0.8, 0.2, 0.2, 1.0)
+
+func update_battery_bar() -> void:
+	var tween = create_tween()
+	tween.tween_property(luz, "value", current_battery, 0.1)
+	var fill_style = luz.get_theme_stylebox("fill")
+	if fill_style is StyleBoxFlat:
+		var style = fill_style as StyleBoxFlat
+		if current_battery > 60:
+			style.bg_color = Color(1.0, 1.0, 0.3, 1.0)  # Amarillo cuando está llena
+		elif current_battery > 30:
+			style.bg_color = Color(1.0, 0.6, 0.0, 1.0)  # Naranja cuando está media
+		else:
+			style.bg_color = Color(1.0, 0.2, 0.2, 1.0)  # Rojo cuando está baja
 
 func actualizar_pistola():
 	var direccion = (get_global_mouse_position() - global_position).normalized()
