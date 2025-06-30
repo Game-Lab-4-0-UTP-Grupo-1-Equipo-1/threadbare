@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var dust_particles: GPUParticles2D = $DustParticles
+@onready var sonido: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var WALK_SPEED: float = 200.0
 @export var RUN_SPEED: float = 350.0
@@ -173,40 +174,34 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	move_and_slide()
 
 func handle_no_player() -> void:
-	velocity = Vector2.ZERO
-	if dust_particles:
-		dust_particles.emitting = false
-
-	var anim_name = ""
-	if abs(last_direction.x) >= abs(last_direction.y):
-		anim_name = "IdleDerecha" if last_direction.x > 0 else "IdleIzquierda"
-	else:
-		anim_name = "IdleAbajo" if last_direction.y > 0 else "IdleArriba"
-
-	if animated_sprite_2d and animated_sprite_2d.animation != anim_name:
-		animated_sprite_2d.play(anim_name)
-
+	queue_free()
+	
 func handle_animations(movement_vector: Vector2) -> void:
 	if not animated_sprite_2d or animacion_bloqueada:
 		return
 	if movement_vector != Vector2.ZERO:
 		last_direction = movement_vector
 	var is_moving = velocity.length() > 5.0
-	var anim_name = ""
 	if is_moving:
-		anim_name = "MoveDerecha"
-	if animated_sprite_2d.animation != anim_name:
-		animated_sprite_2d.play(anim_name)
+		animated_sprite_2d.flip_h = movement_vector.x < 0
+		if animated_sprite_2d.animation != "Mover":
+			animated_sprite_2d.play("Mover")
+	else:
+		animated_sprite_2d.stop()
+		
+		
+		
 
 func intentar_atacar() -> void:
 	if not puede_atacar or not player:
 		return
 
 	if global_position.distance_to(player.global_position) <= rango_ataque:
+		sonido.play()
 		puede_atacar = false
 		puede_moverse = false
 		animacion_bloqueada = true
-		animated_sprite_2d.play("golpeado")
+		animated_sprite_2d.play("ataque")
 
 		if player.has_method("recibir_daño"):
 			player.recibir_daño(dano)

@@ -605,9 +605,8 @@ volume_db = -13.0
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(3, 1.90735e-06)
 scale = Vector2(0.770782, 0.598541)
-energy = 2.41
+energy = 1.5
 texture = ExtResource("7_ynr7a")
-texture_scale = 1.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
