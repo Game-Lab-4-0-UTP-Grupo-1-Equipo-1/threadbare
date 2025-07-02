@@ -2434,6 +2434,7 @@ shape = SubResource("RectangleShape2D_grnkg")
 layer = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 z_index = -1
 color = Color(0.00489983, 0.00489983, 0.00489983, 1)
 
@@ -2485,7 +2486,7 @@ position = Vector2(490, -5789)
 scale = Vector2(2, 2)
 
 [node name="Cofre11" parent="Cofres" groups=["cofre"] instance=ExtResource("9_7mta8")]
-position = Vector2(6126, -5272)
+position = Vector2(6169, -4969)
 scale = Vector2(2, 2)
 
 [node name="Cofre12" parent="Cofres" groups=["cofre"] instance=ExtResource("9_7mta8")]
@@ -2535,8 +2536,7 @@ puerta_id = "puerta_ganzua7"
 position = Vector2(6, 4)
 script = ExtResource("13_eig7k")
 enemigo_escena = ExtResource("4_5exdc")
-radio_min = 500.0
-radio_max = 700.0
+radio_max = 500.0
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
 
