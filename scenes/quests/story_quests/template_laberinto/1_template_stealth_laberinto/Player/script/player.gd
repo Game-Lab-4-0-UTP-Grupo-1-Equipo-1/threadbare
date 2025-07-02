@@ -217,7 +217,10 @@ func collect_key():
 		current_door.check_door_status()
 
 func update_keys_ui():
-	keys_label.text = "Llaves obtenidas: " + str(keys_collected) + "/12"
+	if keys_collected >= 12:
+		keys_label.text = "✅ ¡Ve a la puerta de salida!"
+	else:
+		keys_label.text = "Llaves obtenidas: " + str(keys_collected) + "/12"
 
 func recibir_daño(cantidad: int):
 	print("Recibiendo daño:", cantidad)
