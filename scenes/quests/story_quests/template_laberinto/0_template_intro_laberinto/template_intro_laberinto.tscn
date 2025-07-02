@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://6lieuap5vj74"]
+[gd_scene load_steps=23 format=4 uid="uid://6lieuap5vj74"]
 
 [ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player.tscn" id="1_27w4w"]
 [ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="2_imdvi"]
 [ext_resource type="PackedScene" uid="uid://7873qa54birk" path="res://scenes/game_elements/props/tree/tree.tscn" id="3_g732j"]
 [ext_resource type="Script" uid="uid://necvar42rnih" path="res://scenes/game_elements/characters/player/components/interact_zone.gd" id="3_utn3s"]
-[ext_resource type="Texture2D" uid="uid://cj33r35il1cmc" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/ARBOL.png" id="4_f6rcs"]
 [ext_resource type="PackedScene" uid="uid://yfpfno276rol" path="res://scenes/game_elements/props/fixed_size_label/fixed_size_label.tscn" id="4_jpmd2"]
 [ext_resource type="Resource" uid="uid://cpv0jdg3hmrvc" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/template_intro_components_laberinto/template_intro_laberinto.dialogue" id="5_4e43f"]
 [ext_resource type="Texture2D" uid="uid://cn6txuwxapp4c" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/piso intro 1.png" id="5_f6rcs"]
@@ -3004,42 +3003,6 @@ texture = ExtResource("6_r3vtj")
 sources/0 = SubResource("TileSetAtlasSource_dtbad")
 sources/1 = SubResource("TileSetAtlasSource_dg7vs")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtbad"]
-atlas = ExtResource("4_f6rcs")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2r85q"]
-atlas = ExtResource("4_f6rcs")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3vtj"]
-atlas = ExtResource("4_f6rcs")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg7vs"]
-atlas = ExtResource("4_f6rcs")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_imdvi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtbad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2r85q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3vtj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dg7vs")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r85q"]
 texture = ExtResource("6_dtbad")
 0:0/0 = 0
@@ -3335,115 +3298,177 @@ npc_node_path = NodePath("../SequencePuzzleAssistant")
 
 [node name="arboles" type="Node2D" parent="."]
 
+[node name="Tree35" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(69, 107)
+scale = Vector2(1.0809, 1.0169)
+
+[node name="Tree36" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(158, 107)
+scale = Vector2(0.910894, 0.850549)
+
+[node name="Tree37" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(244, 107)
+scale = Vector2(1.14834, 1.08935)
+
+[node name="Tree38" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(379, 107)
+scale = Vector2(0.793218, 0.860172)
+
+[node name="Tree39" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(500, 107)
+scale = Vector2(1.13894, 1.18227)
+
+[node name="Tree40" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(589, 107)
+scale = Vector2(0.941751, 0.875498)
+
+[node name="Tree41" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(676, 107)
+scale = Vector2(1.17565, 1.11956)
+
 [node name="Tree3" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(220, 165)
+position = Vector2(195, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree4" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(661, 138)
+position = Vector2(636, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree5" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(49, 182)
+position = Vector2(24, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree6" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(575, 143)
+position = Vector2(550, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree7" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(476, 144)
+position = Vector2(451, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree8" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(383, 154)
+position = Vector2(358, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree9" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(132, 174)
+position = Vector2(107, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree10" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(320, 164)
+position = Vector2(295, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree11" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(898, 160)
+position = Vector2(882, 107)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree12" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(797, 175)
+position = Vector2(734, 107)
 scale = Vector2(0.905221, 0.987917)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(654, 515)
+position = Vector2(880, 670)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree2" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(226, 507)
+position = Vector2(386, 726)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree13" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(133, 501)
+position = Vector2(61, 677)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
-[node name="Tree14" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(51, 508)
-scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
+[node name="Tree43" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(8, 143)
+scale = Vector2(0.819425, 0.975979)
 
-[node name="Tree15" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(40, 382)
-scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
-
-[node name="Tree16" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(384, 496)
-scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
-
-[node name="Tree17" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(295, 515)
-scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
-
-[node name="Tree18" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(469, 492)
-scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
+[node name="Tree42" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(-12, 239)
+scale = Vector2(0.905221, 0.987917)
 
 [node name="Tree19" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(47, 260)
+position = Vector2(-15, 325)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
+
+[node name="Tree15" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(-11, 446)
+scale = Vector2(0.951431, 0.99394)
+
+[node name="Tree14" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(-5, 560)
+scale = Vector2(0.951431, 0.99394)
+
+[node name="Tree16" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(639, 684)
+scale = Vector2(0.951431, 0.99394)
+
+[node name="Tree17" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(964, 563)
+scale = Vector2(0.951431, 0.99394)
+
+[node name="Tree18" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(26, 666)
+scale = Vector2(0.951431, 0.99394)
 
 [node name="Tree20" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(565, 496)
+position = Vector2(562, 649)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree21" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(738, 507)
+position = Vector2(924, 631)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
 
 [node name="Tree22" parent="arboles" instance=ExtResource("3_g732j")]
-position = Vector2(827, 505)
+position = Vector2(738, 623)
 scale = Vector2(0.951431, 0.99394)
-sprite_frames = SubResource("SpriteFrames_imdvi")
+
+[node name="Tree23" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(1.99999, 684)
+scale = Vector2(1.0877, 0.990834)
+
+[node name="Tree24" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(105, 649)
+scale = Vector2(1.00269, 0.949383)
+
+[node name="Tree25" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(186, 689)
+scale = Vector2(0.929728, 0.98169)
+
+[node name="Tree26" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(302, 697)
+scale = Vector2(0.98421, 0.910131)
+
+[node name="Tree27" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(407, 687)
+scale = Vector2(0.832598, 0.882182)
+
+[node name="Tree28" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(512, 651)
+scale = Vector2(0.873323, 0.937322)
+
+[node name="Tree29" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(463, 717)
+scale = Vector2(1.20385, 1.18749)
+
+[node name="Tree30" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(596, 660)
+scale = Vector2(0.919491, 0.895689)
+
+[node name="Tree31" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(339, 655)
+scale = Vector2(0.90913, 0.850788)
+
+[node name="Tree32" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(253, 685)
+scale = Vector2(0.903668, 0.898023)
+
+[node name="Tree33" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(697, 655)
+scale = Vector2(1.11984, 1.02341)
+
+[node name="Tree34" parent="arboles" instance=ExtResource("3_g732j")]
+position = Vector2(813, 689)
+scale = Vector2(1.10215, 1.18415)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//wwAAAABAA0AAAD//w0AAAABAAsAAAD//w4AAAABAAwAAAD//w8AAAABAA0AAAD//xAAAAABAAsAAAD+/w0AAAABAAsAAAD+/w4AAAABAAwAAAD+/w8AAAABAA0AAAD+/xAAAAABAA4AAAD//xEAAAABAAwAAAD//xIAAAABAA0AAAD//xMAAAABAAsAAAD//xQAAAABAAwAAAD//xUAAAABAA0AAAD//xYAAAABAAsAAAD//xcAAAABAAwAAAD//xgAAAABAAsAAAD//xkAAAABAAwAAAD//xoAAAABAAsAAAD//xsAAAABAAwAAAD//xwAAAABAAsAAAD//x0AAAABAAwAAAD//x4AAAABAA0AAAD//x8AAAABAAsAAAD//yAAAAABAAwAAAD//yEAAAABAA0AAAD//yIAAAABAA4AAAAAACMAAAABAAsAAAABACMAAAABAAsAAAACACMAAAABAAsAAAADACMAAAACAAsAAAAEACMAAAADAAsAAAAGACMAAAABAAsAAAAHACMAAAACAAsAAAAIACMAAAADAAsAAAAJACMAAAAEAAsAAAAFACMAAAAEAAsAAAAKACMAAAABAAsAAAALACMAAAACAAsAAAAMACMAAAADAAsAAAANACMAAAAEAAsAAAAOACMAAAABAAsAAAAPACMAAAACAAsAAAAQACMAAAADAAsAAAARACMAAAAEAAsAAAASACMAAAABAAsAAAATACMAAAACAAsAAAAUACMAAAADAAsAAAAVACMAAAACAAsAAAAWACMAAAADAAsAAAAXACMAAAACAAsAAAAYACMAAAADAAsAAAAZACMAAAAEAAsAAAAaACMAAAABAAsAAAAbACMAAAACAAsAAAAcACMAAAADAAsAAAAdACMAAAAEAAsAAAAeACMAAAABAAsAAAAfACMAAAACAAsAAAAgACMAAAADAAsAAAAhACMAAAAEAAsAAAAiACMAAAABAAsAAAAjACMAAAACAAsAAAAkACMAAAADAAsAAAAlACMAAAAEAAsAAAAmACMAAAABAAsAAAAnACMAAAACAAsAAAAoACMAAAADAAsAAAApACMAAAAEAAsAAAAqACMAAAABAAsAAAArACMAAAACAAsAAAAsACMAAAADAAsAAAAtACMAAAAEAAsAAAAuACMAAAABAAsAAAAvACMAAAACAAsAAAAwACMAAAABAAsAAAAxACMAAAACAAsAAAAyACMAAAADAAsAAAAzACMAAAABAAsAAAA0ACMAAAACAAsAAAA1ACMAAAADAAsAAAA2ACMAAAABAAsAAAA4ACMAAAADAAsAAAA5ACMAAAAEAAsAAAA6ACMAAAADAAsAAAA7ACMAAAAEAAsAAAA3ACMAAAACAAsAAAAAAP//AAABAAsAAAABAP//AAACAAsAAAACAP//AAADAAsAAAADAP//AAAEAAsAAAAEAP//AAABAAsAAAAFAP//AAACAAsAAAAGAP//AAADAAsAAAAHAP//AAAEAAsAAAAIAP//AAABAAsAAAAJAP//AAACAAsAAAAKAP//AAADAAsAAAALAP//AAAEAAsAAAAMAP//AAABAAsAAAANAP//AAACAAsAAAAOAP//AAADAAsAAAAPAP//AAAEAAsAAAAQAP//AAABAAsAAAARAP//AAABAAsAAAASAP//AAACAAsAAAATAP//AAADAAsAAAAUAP//AAAEAAsAAAAVAP//AAABAAsAAAAWAP//AAACAAsAAAAXAP//AAADAAsAAAAYAP//AAAEAAsAAAAZAP//AAABAAsAAAAaAP//AAACAAsAAAAbAP//AAADAAsAAAAcAP//AAAEAAsAAAAdAP//AAABAAsAAAAeAP//AAACAAsAAAAfAP//AAADAAsAAAAgAP//AAAEAAsAAAAhAP//AAABAAsAAAAiAP//AAACAAsAAAAjAP//AAADAAsAAAAkAP//AAAEAAsAAAAlAP//AAABAAsAAAAmAP//AAACAAsAAAAnAP//AAADAAsAAAAoAP//AAAEAAsAAAApAP//AAABAAsAAAAqAP//AAACAAsAAAArAP//AAADAAsAAAAsAP//AAAEAAsAAAAtAP//AAABAAsAAAAuAP//AAACAAsAAAAvAP//AAADAAsAAAAwAP//AAAEAAsAAAAxAP//AAABAAsAAAAyAP//AAACAAsAAAAzAP//AAADAAsAAAA0AP//AAAEAAsAAAA1AP//AAABAAsAAAA2AP//AAACAAsAAAA3AP//AAADAAsAAAA4AP//AAAEAAsAAAA5AP//AAABAAsAAAA6AP//AAACAAsAAAA7AP//AAADAAsAAAA8AP//AAAEAAsAAAD//woAAAABAAsAAAD//wsAAAABAAwAAAD//wcAAAABAAsAAAD//wgAAAABAAwAAAD//wkAAAABAA0AAAD//wQAAAABAA0AAAD//wUAAAABAAwAAAD//wYAAAABAA0AAAD//wIAAAABAA0AAAD//wMAAAABAAwAAAD//wAAAAABAAwAAAD//wEAAAABAA0AAAD/////AAABAAsAAAA8AAEAAAABAAwAAAA8AAIAAAABAA0AAAA8AAMAAAABAA0AAAA8AAAAAAABAAsAAAA8AAYAAAABAA0AAAA8AAcAAAABAAwAAAA8AAgAAAABAAsAAAA8AAQAAAABAAsAAAA8AAUAAAABAAwAAAA8AAkAAAABAAwAAAA8AAoAAAABAA0AAAA8AAsAAAABAAsAAAA8AAwAAAABAAsAAAA8AA0AAAABAAwAAAA8AA4AAAABAA0AAAA8AA8AAAABAAsAAAA8ABAAAAABAAwAAAA8ABEAAAABAAsAAAA8ABIAAAABAAwAAAA8ABMAAAABAA0AAAA8ABQAAAABAAsAAAA8ABUAAAABAAwAAAA8ABYAAAABAA0AAAA8ABcAAAABAAsAAAA8ABgAAAABAAwAAAA8ABkAAAABAA0AAAA8ABsAAAABAAwAAAA8ABwAAAABAA0AAAA8AB0AAAABAAsAAAA8ABoAAAABAAsAAAA8AB4AAAABAAsAAAA8AB8AAAABAAwAAAA8ACAAAAABAAsAAAA8ACEAAAABAAsAAAA8ACIAAAABAAwAAAA8ACMAAAABAA0AAAAAACIAAAACAAsAAAABACIAAAACAAsAAAACACIAAAADAAsAAAADACIAAAACAAsAAAAEACIAAAADAAsAAAAFACIAAAACAAsAAAAGACIAAAADAAsAAAAHACIAAAACAAsAAAAIACIAAAADAAsAAAAJACIAAAACAAsAAAAKACIAAAADAAsAAAALACIAAAACAAsAAAAMACIAAAADAAsAAAANACIAAAACAAsAAAAOACIAAAADAAsAAAAWACIAAAADAAsAAAAXACIAAAACAAsAAAAYACIAAAADAAsAAAAZACIAAAACAAsAAAAaACIAAAADAAsAAAAbACIAAAACAAsAAAAcACIAAAADAAsAAAAdACIAAAACAAsAAAAeACIAAAADAAsAAAAfACIAAAACAAsAAAAgACIAAAADAAsAAAAhACIAAAACAAsAAAAiACIAAAADAAsAAAAjACIAAAACAAsAAAAPACIAAAACAAsAAAAQACIAAAADAAsAAAARACIAAAACAAsAAAASACIAAAADAAsAAAATACIAAAACAAsAAAAUACIAAAADAAsAAAAVACIAAAACAAsAAAAkACIAAAADAAsAAAAlACIAAAACAAsAAAAmACIAAAACAAsAAAAnACIAAAADAAsAAAAoACIAAAACAAsAAAApACIAAAADAAsAAAAqACIAAAACAAsAAAArACIAAAADAAsAAAAsACIAAAACAAsAAAAtACIAAAADAAsAAAAuACIAAAACAAsAAAAvACIAAAADAAsAAAAwACIAAAACAAsAAAAxACIAAAADAAsAAAAyACIAAAACAAsAAAAzACIAAAADAAsAAAA0ACIAAAACAAsAAAA1ACIAAAADAAsAAAA2ACIAAAACAAsAAAA3ACIAAAADAAsAAAA4ACIAAAACAAsAAAA5ACIAAAADAAsAAAA6ACIAAAACAAsAAAA7ACIAAAADAAsAAAA=")
