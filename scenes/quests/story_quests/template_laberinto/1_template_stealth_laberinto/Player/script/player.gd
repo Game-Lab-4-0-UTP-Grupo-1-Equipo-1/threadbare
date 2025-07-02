@@ -212,13 +212,12 @@ func clear_current_door():
 
 func collect_key():
 	keys_collected += 1
-	print("¡Llave obtenida! Total: ", keys_collected)
 	update_keys_ui()
 	if current_door:
 		current_door.check_door_status()
 
 func update_keys_ui():
-	keys_label.text = "Llaves obtenidas: " + str(keys_collected)
+	keys_label.text = "Llaves obtenidas: " + str(keys_collected) + "/12"
 
 func recibir_daño(cantidad: int):
 	print("Recibiendo daño:", cantidad)

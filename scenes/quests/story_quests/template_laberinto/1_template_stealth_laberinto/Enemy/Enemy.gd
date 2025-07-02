@@ -46,6 +46,7 @@ func recibir_daño(cantidad: int) -> void:
 	puede_moverse = false
 	if vida <= 0:
 		queue_free()
+		remove_from_group("enemigos")
 	navigation_agent.set_velocity(Vector2.ZERO)
 	animated_sprite_2d.play("golpeado")
 	await get_tree().create_timer(0.3).timeout
@@ -175,6 +176,7 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func handle_no_player() -> void:
 	queue_free()
+	remove_from_group("enemigos")
 	
 func handle_animations(movement_vector: Vector2) -> void:
 	if not animated_sprite_2d or animacion_bloqueada:
