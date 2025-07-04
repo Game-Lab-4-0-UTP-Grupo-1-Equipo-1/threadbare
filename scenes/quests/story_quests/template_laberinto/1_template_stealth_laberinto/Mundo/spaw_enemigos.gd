@@ -3,7 +3,7 @@ extends Node2D
 @export var tiempo_entre_oleadas: float = 30.0  # Más rápido que antes (antes 30.0)
 @export var radio_min: float = 200.0
 @export var radio_max: float = 300.0
-@export var max_enemigos: int = 10
+@export var max_enemigos: int = 11
 @onready var jugador = get_tree().get_first_node_in_group("player")
 func _ready():
 	spawn_enemigos()
@@ -30,9 +30,9 @@ func spawn_enemigos():
 
 	# Aumentar la probabilidad de aparición de más enemigos
 	var probabilidad_extra = clamp((1.0 - float(enemigos_actuales) / max_enemigos), 0.0, 1.0)
-	var cantidad = randi_range(2, 5)  # Aumentado el mínimo y máximo
+	var cantidad = randi_range(2, 4)  # Aumentado el mínimo y máximo
 
-	if randf() < 0.20 + probabilidad_extra * 0.2:  # Probabilidad más alta
+	if randf() < 0.20 + probabilidad_extra * 0.1:  # Probabilidad más alta
 		cantidad = 5
 
 	# Ajustar para no exceder el máximo permitido

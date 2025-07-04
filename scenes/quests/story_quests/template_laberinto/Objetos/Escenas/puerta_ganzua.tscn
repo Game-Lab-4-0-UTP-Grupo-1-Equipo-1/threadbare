@@ -47,12 +47,14 @@ sprite_frames = SubResource("SpriteFrames_eayi8")
 animation = &"Cerrado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.625, 1.875)
 shape = SubResource("RectangleShape2D_74bh4")
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_tu42m")
 debug_color = Color(0.66016, 0.425019, 0.756519, 0.42)
